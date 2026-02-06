@@ -1,0 +1,4 @@
+@import "tailwindcss";
+
+/* Override dark mode to use .dark class instead of prefers-color-scheme media query */
+@custom-variant dark (&:where(.dark, .dark *));

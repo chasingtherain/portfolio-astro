@@ -1,17 +1,377 @@
 ---
+import Layout from "../layouts/Layout.astro";
+import ThemeToggle from "../components/ThemeToggle.astro";
 
+const personalInfo = {
+  name: "Jay Thia",
+  tagline: "Building with AI to solve real-world problems",
+  email: "junpeng94@gmail.com",
+  github: "https://github.com/chasingtherain",
+  linkedin: "https://www.linkedin.com/in/jaythia/",
+};
+
+const projects = [
+  {
+    title: "Better Daily",
+    description: "A journaling app that helps users build reflection habits through daily prompts and progress tracking.",
+    stack: ["Next.js", "TypeScript", "Postgres", "Tailwind CSS", "Radix UI"],
+    repo: "https://github.com/chasingtherain/better-daily",
+    deck: "https://docs.google.com/presentation/d/14fDolZ_Qmv5V4GRzopHqVTuC3M1RH2Ia_TItmcdHuRo/edit?usp=sharing",
+    liveSite: "https://www.betterdailyjournal.com/"
+  },
+  {
+    title: "Track Travel",
+    description: "Track and visualize your travels across UNESCO World Heritage Sites and theme parks worldwide.",
+    stack: ["React", "React Query", "Firebase", "Tailwind CSS", "Jest"],
+    repo: "https://github.com/chasingtherain/unesgo-explore",
+    deck: "https://docs.google.com/presentation/d/1q8QFDQM9px4jS1U1ZgrUpdLv48FMazI3tiqm2d46P_E/edit?usp=sharing",
+    liveSite: "https://tracktravel.co/"
+  },
+  {
+    title: "Leave Plans",
+    description: "Team leave management system with calendar views, approval workflows, and team availability tracking.",
+    stack: ["React", "Node.js", "Express", "MongoDB", "Tailwind CSS"],
+    repo: "https://github.com/chasingtherain/leave-management/",
+    deck: "https://docs.google.com/presentation/d/1zI_5tlsEWro4H2Z4jx-zqPo4QSiwqYXOSZxQ7XXVQWg/edit?usp=sharing",
+    liveSite: null
+  },
+  {
+    title: "Remind Me",
+    description: "Schedule email reminders for yourself or others—never forget birthdays, deadlines, or important dates.",
+    stack: ["Next.js", "Postgres", "Material UI"],
+    repo: "https://github.com/chasingtherain/remindme-next",
+    liveSite: "https://sendmeareminder.vercel.app/"
+  }
+];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title={`${personalInfo.name} | Portfolio`}>
+  <!-- Header / Navigation -->
+  <header class="sticky top-0 z-50 border-b border-gray-200 bg-white/80 backdrop-blur-sm dark:border-gray-700 dark:bg-gray-900/80">
+    <nav class="mx-auto flex max-w-5xl items-center justify-between px-4 py-4">
+      <a href="/" class="text-lg font-bold">{personalInfo.name}</a>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden items-center gap-6 md:flex">
+        <ul class="flex gap-6 text-sm">
+          <li><a href="#about" class="nav-link hover:text-gray-600 dark:hover:text-gray-300">About</a></li>
+          <li><a href="#projects" class="nav-link hover:text-gray-600 dark:hover:text-gray-300">Projects</a></li>
+          <li><a href="/Jay_Thia_Resume.pdf" download class="hover:text-gray-600 dark:hover:text-gray-300">Resume</a></li>
+        </ul>
+        <ThemeToggle />
+      </div>
+
+      <!-- Mobile Navigation Controls -->
+      <div class="flex items-center gap-4 md:hidden">
+        <ThemeToggle />
+        <button
+          id="mobile-menu-button"
+          type="button"
+          class="p-2 hover:bg-gray-100 rounded-lg dark:hover:bg-gray-800"
+          aria-label="Toggle menu"
+          aria-expanded="false"
+        >
+          <!-- Hamburger icon -->
+          <svg id="hamburger-icon" class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <!-- Close icon (hidden by default) -->
+          <svg id="close-icon" class="hidden h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile Menu (hidden by default) -->
+    <div id="mobile-menu" class="hidden border-t border-gray-200 bg-white px-4 py-4 md:hidden dark:border-gray-700 dark:bg-gray-900">
+      <ul class="flex flex-col gap-4 text-sm">
+        <li><a href="#about" class="nav-link block py-2 hover:text-gray-600 dark:hover:text-gray-300">About</a></li>
+        <li><a href="#projects" class="nav-link block py-2 hover:text-gray-600 dark:hover:text-gray-300">Projects</a></li>
+        <li><a href="/Jay_Thia_Resume.pdf" download class="block py-2 hover:text-gray-600 dark:hover:text-gray-300">Resume</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- Aurora glow effects - fixed to viewport, visible in dark mode -->
+  <div class="aurora-glow-primary"></div>
+  <div class="aurora-glow-secondary"></div>
+
+  <main class="relative z-10">
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="mx-auto max-w-5xl px-4 py-20 md:py-32">
+        <h1 class="text-4xl font-bold md:text-6xl">{personalInfo.name}</h1>
+        <p class="mt-4 text-xl text-gray-600 md:text-2xl dark:text-gray-400">{personalInfo.tagline}</p>
+        <div class="mt-8 flex gap-4">
+          <a
+            href="#projects"
+            class="rounded-lg bg-gray-900 px-6 py-3 text-white hover:bg-gray-700 dark:bg-white dark:text-gray-900 dark:hover:bg-gray-200"
+          >
+            View Projects
+          </a>
+          <a
+            href="#contact"
+            class="rounded-lg border border-gray-300 px-6 py-3 hover:bg-gray-50 dark:border-gray-600 dark:hover:bg-gray-800"
+          >
+            Get in Touch
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="border-t border-gray-200 dark:border-gray-700">
+      <div class="mx-auto max-w-5xl px-4 py-20">
+        <h2 class="text-3xl font-bold">About Me</h2>
+        <div class="mt-8 grid gap-8 md:grid-cols-2">
+          <div>
+            <p class="text-gray-600 dark:text-gray-400">
+              Product background. Engineering skills. Currently helping clients turn data into revenue at Plusgrade.
+            </p>
+            <p class="mt-4 text-gray-600 dark:text-gray-400">
+              Built these projects during a sabbatical to scratch my own itches—and prove I could ship. Now I build AI-powered tooling (Claude Code, Kiro) to automate analytics workflows in my day job.
+            </p>
+          </div>
+          <div>
+            <h3 class="font-semibold">Skills</h3>
+            <ul class="mt-4 flex flex-wrap gap-2">
+              <li class="rounded bg-gray-100 px-3 py-1 dark:bg-gray-800">JavaScript</li>
+              <li class="rounded bg-gray-100 px-3 py-1 dark:bg-gray-800">TypeScript</li>
+              <li class="rounded bg-gray-100 px-3 py-1 dark:bg-gray-800">Python</li>
+              <li class="rounded bg-gray-100 px-3 py-1 dark:bg-gray-800">React</li>
+              <li class="rounded bg-gray-100 px-3 py-1 dark:bg-gray-800">Next.js</li>
+              <li class="rounded bg-gray-100 px-3 py-1 dark:bg-gray-800">Node.js</li>
+              <li class="rounded bg-gray-100 px-3 py-1 dark:bg-gray-800">PostgreSQL</li>
+              <li class="rounded bg-gray-100 px-3 py-1 dark:bg-gray-800">MongoDB</li>
+              <li class="rounded bg-gray-100 px-3 py-1 dark:bg-gray-800">Firebase</li>
+              <li class="rounded bg-gray-100 px-3 py-1 dark:bg-gray-800">Tailwind CSS</li>
+              <li class="rounded bg-gray-100 px-3 py-1 dark:bg-gray-800">SQL</li>
+              <li class="rounded bg-gray-100 px-3 py-1 dark:bg-gray-800">Splunk</li>
+              <li class="rounded bg-gray-100 px-3 py-1 dark:bg-gray-800">Figma</li>
+              <li class="rounded bg-gray-100 px-3 py-1 dark:bg-gray-800">Claude Code</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="border-t border-gray-200 bg-gray-50 dark:border-gray-700 dark:bg-transparent">
+      <div class="mx-auto max-w-5xl px-4 py-20">
+        <h2 class="text-3xl font-bold">Projects</h2>
+        <p class="mt-2 text-gray-600 dark:text-gray-400">A selection of my recent work</p>
+
+        <div class="mt-12 grid gap-8 md:grid-cols-2">
+          {projects.map((project) => (
+            <article class="flex flex-col rounded-lg border border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-900/80">
+              <h3 class="text-xl font-semibold">{project.title}</h3>
+              <p class="mt-2 flex-1 text-gray-600 dark:text-gray-400">{project.description}</p>
+
+              <div class="mt-4 flex flex-wrap gap-2">
+                {project.stack.map((tech) => (
+                  <span class="rounded bg-gray-100 px-2 py-1 text-xs dark:bg-gray-800">{tech}</span>
+                ))}
+              </div>
+
+              <div class="mt-4 flex flex-wrap gap-3 text-sm">
+                {project.liveSite && (
+                  <a
+                    href={project.liveSite}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="underline hover:text-gray-600 dark:hover:text-gray-300"
+                  >
+                    Live Site
+                  </a>
+                )}
+                {project.repo && (
+                  <a
+                    href={project.repo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="underline hover:text-gray-600 dark:hover:text-gray-300"
+                  >
+                    GitHub
+                  </a>
+                )}
+                {project.deck && (
+                  <a
+                    href={project.deck}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="underline hover:text-gray-600 dark:hover:text-gray-300"
+                  >
+                    Deck
+                  </a>
+                )}
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="border-t border-gray-200 bg-gray-50 dark:border-gray-700 dark:bg-transparent">
+      <div class="mx-auto max-w-5xl px-4 py-20">
+        <h2 class="text-3xl font-bold">Get in Touch</h2>
+        <p class="mt-2 text-gray-600 dark:text-gray-400">
+          Interested in working together? Let's talk.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-4">
+          <a
+            href={`mailto:${personalInfo.email}`}
+            class="rounded-lg bg-gray-900 px-6 py-3 text-white hover:bg-gray-700 dark:bg-white dark:text-gray-900 dark:hover:bg-gray-200"
+          >
+            {personalInfo.email}
+          </a>
+          <a
+            href={personalInfo.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="rounded-lg border border-gray-300 px-6 py-3 hover:bg-gray-100 dark:border-gray-600 dark:hover:bg-gray-800"
+          >
+            LinkedIn
+          </a>
+          <a
+            href={personalInfo.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="rounded-lg border border-gray-300 px-6 py-3 hover:bg-gray-100 dark:border-gray-600 dark:hover:bg-gray-800"
+          >
+            GitHub
+          </a>
+          <a
+            href="/Jay_Thia_Resume.pdf"
+            download
+            class="rounded-lg border border-gray-300 px-6 py-3 hover:bg-gray-100 dark:border-gray-600 dark:hover:bg-gray-800"
+          >
+            Download Resume
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-gray-200 dark:border-gray-700">
+    <div class="mx-auto max-w-5xl px-4 py-8">
+      <p class="text-center text-sm text-gray-500 dark:text-gray-400">
+        &copy; {new Date().getFullYear()} {personalInfo.name}. All rights reserved.
+      </p>
+    </div>
+  </footer>
+</Layout>
+
+<script is:inline>
+  (function() {
+    // Mobile menu toggle
+    const menuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const hamburgerIcon = document.getElementById('hamburger-icon');
+    const closeIcon = document.getElementById('close-icon');
+
+    if (menuButton && mobileMenu) {
+      menuButton.addEventListener('click', function() {
+        const isOpen = !mobileMenu.classList.contains('hidden');
+
+        if (isOpen) {
+          mobileMenu.classList.add('hidden');
+          hamburgerIcon.classList.remove('hidden');
+          closeIcon.classList.add('hidden');
+          menuButton.setAttribute('aria-expanded', 'false');
+        } else {
+          mobileMenu.classList.remove('hidden');
+          hamburgerIcon.classList.add('hidden');
+          closeIcon.classList.remove('hidden');
+          menuButton.setAttribute('aria-expanded', 'true');
+        }
+      });
+
+      // Close mobile menu when clicking a nav link
+      const mobileNavLinks = mobileMenu.querySelectorAll('.nav-link');
+      mobileNavLinks.forEach(function(link) {
+        link.addEventListener('click', function() {
+          mobileMenu.classList.add('hidden');
+          hamburgerIcon.classList.remove('hidden');
+          closeIcon.classList.add('hidden');
+          menuButton.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+      anchor.addEventListener('click', function(event) {
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          event.preventDefault();
+          const headerHeight = document.querySelector('header').offsetHeight;
+          const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - headerHeight;
+
+          window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  })();
+</script>
+
+<style>
+  /* Aurora glow effect - organic shapes, stays at top of page */
+  .aurora-glow-primary,
+  .aurora-glow-secondary {
+    position: absolute;
+    pointer-events: none;
+    opacity: 0;
+    z-index: 0;
+  }
+
+  /* Primary glow - elongated teal sweep from top-left */
+  .aurora-glow-primary {
+    top: -150px;
+    left: -200px;
+    width: 1200px;
+    height: 500px;
+    background: linear-gradient(
+      135deg,
+      rgba(16, 185, 129, 0.4) 0%,
+      rgba(16, 185, 129, 0.2) 30%,
+      rgba(16, 185, 129, 0.05) 60%,
+      transparent 100%
+    );
+    filter: blur(80px);
+    transform: rotate(-15deg);
+  }
+
+  /* Secondary glow - soft blue accent */
+  .aurora-glow-secondary {
+    top: 100px;
+    left: 150px;
+    width: 900px;
+    height: 400px;
+    background: linear-gradient(
+      120deg,
+      rgba(59, 130, 246, 0.35) 0%,
+      rgba(6, 182, 212, 0.15) 50%,
+      transparent 100%
+    );
+    filter: blur(100px);
+    transform: rotate(-10deg);
+  }
+
+  /* Show aurora in dark mode */
+  :global(.dark) .aurora-glow-primary {
+    opacity: 1;
+  }
+
+  :global(.dark) .aurora-glow-secondary {
+    opacity: 0.8;
+  }
+</style>
