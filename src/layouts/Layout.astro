@@ -14,7 +14,7 @@ const {
   image = "/og-image.png"
 } = Astro.props;
 
-const siteUrl = "https://jaythia.com"; // Update this when you have your domain
+const siteUrl = "https://jaythia.vercel.app";
 const canonicalUrl = new URL(Astro.url.pathname, siteUrl).href;
 const ogImageUrl = new URL(image, siteUrl).href;
 ---
