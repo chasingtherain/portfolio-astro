@@ -1,6 +1,7 @@
 ---
 // Base layout component - wraps all pages with consistent structure
 // Props allow each page to set its own title, description, and OG image for SEO
+import Analytics from '@vercel/analytics/astro';
 
 interface Props {
   title: string;
@@ -62,6 +63,7 @@ const ogImageUrl = new URL(image, siteUrl).href;
   </head>
   <body class="min-h-screen bg-white text-gray-900 antialiased dark:bg-gray-900 dark:text-gray-100">
     <slot />
+    <Analytics />
   </body>
 </html>
 
