@@ -150,11 +150,11 @@ const projects = [
         <h2 class="text-3xl font-bold">About Me</h2>
         <div class="mt-8 grid gap-8 md:grid-cols-2">
           <div>
-            <p class="text-gray-600 dark:text-gray-400">
-              Product background. Engineering skills. Currently helping clients turn data into revenue at Plusgrade.
+            <p class="font-medium text-gray-900 dark:text-gray-100">
+              Full-stack AI builder. Product background. Ships fast.
             </p>
             <p class="mt-4 text-gray-600 dark:text-gray-400">
-              Built these projects during a sabbatical to learn the craft. Now I build AI-powered tooling to automate analytics workflows in my day job.
+              I use AI-assisted workflows to do what used to take a team — product thinking, design decisions, and engineering execution in one loop. My background in data analysis and technical account management means I understand both the business problem and the system underneath it.
             </p>
           </div>
           <div class="min-w-0">
@@ -162,24 +162,31 @@ const projects = [
           </div>
         </div>
 
-        <div class="mt-8">
-          <h3 class="font-semibold">Skills</h3>
-          <ul class="mt-4 flex flex-wrap gap-2">
-            <li class="rounded bg-gray-100 px-3 py-1 dark:bg-gray-800">Claude</li>
-            <li class="rounded bg-gray-100 px-3 py-1 dark:bg-gray-800">JavaScript</li>
-            <li class="rounded bg-gray-100 px-3 py-1 dark:bg-gray-800">TypeScript</li>
-            <li class="rounded bg-gray-100 px-3 py-1 dark:bg-gray-800">Python</li>
-            <li class="rounded bg-gray-100 px-3 py-1 dark:bg-gray-800">React</li>
-            <li class="rounded bg-gray-100 px-3 py-1 dark:bg-gray-800">Next.js</li>
-            <li class="rounded bg-gray-100 px-3 py-1 dark:bg-gray-800">Node.js</li>
-            <li class="rounded bg-gray-100 px-3 py-1 dark:bg-gray-800">PostgreSQL</li>
-            <li class="rounded bg-gray-100 px-3 py-1 dark:bg-gray-800">MongoDB</li>
-            <li class="rounded bg-gray-100 px-3 py-1 dark:bg-gray-800">Firebase</li>
-            <li class="rounded bg-gray-100 px-3 py-1 dark:bg-gray-800">Tailwind CSS</li>
-            <li class="rounded bg-gray-100 px-3 py-1 dark:bg-gray-800">SQL</li>
-            <li class="rounded bg-gray-100 px-3 py-1 dark:bg-gray-800">Splunk</li>
-            <li class="rounded bg-gray-100 px-3 py-1 dark:bg-gray-800">Figma</li>
-          </ul>
+        <div class="mt-8 flex flex-col gap-4">
+          <div>
+            <h3 class="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2">AI & Agents</h3>
+            <ul class="flex flex-wrap gap-2">
+              {["Claude", "OpenAI API", "A2A Protocol", "RAG", "Multi-agent systems"].map(s => (
+                <li class="rounded bg-gray-100 px-3 py-1 text-sm dark:bg-gray-800">{s}</li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2">Build Stack</h3>
+            <ul class="flex flex-wrap gap-2">
+              {["Python", "TypeScript", "React", "Next.js", "Node.js", "PostgreSQL"].map(s => (
+                <li class="rounded bg-gray-100 px-3 py-1 text-sm dark:bg-gray-800">{s}</li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-xs font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-2">Product & Data</h3>
+            <ul class="flex flex-wrap gap-2">
+              {["SQL", "Figma", "Splunk", "Analytics"].map(s => (
+                <li class="rounded bg-gray-100 px-3 py-1 text-sm dark:bg-gray-800">{s}</li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
     </section>
